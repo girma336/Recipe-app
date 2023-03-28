@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_28_075529) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_28_082645) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,14 +22,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_075529) do
     t.string "measurement_unit"
   end
 
-  create_table "reacip_foods", force: :cascade do |t|
+  create_table "recipe_foods", force: :cascade do |t|
     t.integer "quantity"
     t.bigint "recipe_id", null: false
     t.bigint "food_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["food_id"], name: "index_reacip_foods_on_food_id"
-    t.index ["recipe_id"], name: "index_reacip_foods_on_recipe_id"
+    t.index ["food_id"], name: "index_recipe_foods_on_food_id"
+    t.index ["recipe_id"], name: "index_recipe_foods_on_recipe_id"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_075529) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "reacip_foods", "foods"
-  add_foreign_key "reacip_foods", "recipes"
+  add_foreign_key "recipe_foods", "foods"
+  add_foreign_key "recipe_foods", "recipes"
   add_foreign_key "recipes", "users"
 end
