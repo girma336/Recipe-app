@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   before_action :find_user
 
   def index
-    @recipes = current_user.recipes
+    @recipes = Recipe.where(user: current_user)
   end
 
   def show
@@ -59,6 +59,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :preparation_time, :cooking_time, :public)
+    params.require(:recipe).permit(:name, :description, :preparation_date, :cooking_time, :public)
   end
 end
