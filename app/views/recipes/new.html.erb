@@ -16,11 +16,11 @@
     </div>
     <div>
       <%= f.label :preparation_time, 'Preparation Time'%><br>
-      <%= f.number_field :preparation_time, class: "input" %>
+      <%= f.text_field :preparation_date, class: "input" %>
     </div>
     <div>
       <%= f.label :cooking_time, 'Cooking Time'%><br>
-      <%= f.number_field :cooking_time, step: 0.5, class: "input" %>
+      <%= f.text_field :cooking_time, class: "input" %>
     </div>
     <div>
       <%= f.label :public, "Do you want to make it public?" %>

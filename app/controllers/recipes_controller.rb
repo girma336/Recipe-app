@@ -1,10 +1,10 @@
 class RecipesController < ApplicationController
-  load_and_authorize_resource
-  before_action :authenticate_user!
-  before_action :find_user
+  # load_and_authorize_resource
+  # before_action :authenticate_user!
+  # before_action :find_user
 
   def index
-    @recipes = current_user.recipes
+    @recipes = Recipe.where(user: current_user)
   end
 
   def show
@@ -59,6 +59,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :preparation_time, :cooking_time, :public)
+    params.require(:recipe).permit(:name, :description, :preparation_date, :cooking_time, :public)
   end
 end
