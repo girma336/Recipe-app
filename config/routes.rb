@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   root "users#index"
   resources :recipes, only: [:index, :show, :create, :new, :destroy]
   resources :foods, only: [:index, :new, :create, :destroy] 
+  resources :inventories, only: [:index, :show, :create, :new, :destroy]
 end
