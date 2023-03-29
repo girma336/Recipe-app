@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   root "users#index"
   resources :recipes, only: [:index, :show, :create, :new, :destroy]
   resources :foods, only: [:index, :new, :create, :destroy] 
-  # resources :inventories, only: [:index, :show, :create, :new, :destroy] do
-  #   resources :inventory_foods, only: [:create, :new]
+  resources :public_recipes, only: [:index]
+  resources :public_recipes, only: [:index, :create, :new, ]
+
   # end
   get '/inventories', to: 'inventories#index'
   get '/inventories/new', to: 'inventories#new'
@@ -20,5 +21,11 @@ Rails.application.routes.draw do
   delete '/inventory_foods/:id', to: 'inventory_foods#destroy'
   get '/inventories/:id/inventory_foods/new', to: 'inventory_foods#new'
   post '/inventories/:id/inventory_foods', to: 'inventory_foods#create'
-  # delete '/inventories/:id/inventory_foods/:id', to: 'inventory_foods#create'
+
+  delete '/recipe_foods/:id', to: 'recipe_foods#destroy'
+  get '/recipes/:id/recipe_foods/new', to: 'recipe_foods#new'
+  post '/recipes/:id/recipe_foods', to: 'recipe_foods#create'
+  get '/recipe_foods/:id', to: 'recipe_foods#show'
+  
+  # post '/shopping_lists/', to: 'shopping_lists#create'
 end

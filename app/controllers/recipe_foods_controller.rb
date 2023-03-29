@@ -24,7 +24,7 @@ class RecipeFoodsController < ApplicationController
   end
 
   def new
-    @foods = @user.foods.all
+    # @foods = @user.foods.all
     @recipe_food = RecipeFood.new
   end
 
@@ -48,9 +48,9 @@ class RecipeFoodsController < ApplicationController
 
   def create
     @recipe_food = RecipeFood.new(recipe_food_params)
-    @recipe_food.recipe = @recipe
+    # @recipe_food.recipe = @recipe
     if @recipe_food.save
-      redirect_to recipe_path(@recipe), notice: 'Recipe Food created successfully'
+      redirect_to "/recipe_foods/#{params[:id]}", notice: 'Recipe Food created successfully'
     else
       flash.now[:alert] = @recipe_food.errors.full_messages.first if @recipe_food.errors.any?
       render :new, status: 400
@@ -61,7 +61,7 @@ class RecipeFoodsController < ApplicationController
     if can? :edit, @recipe
       @recipe_food = RecipeFood.find(params[:id])
       if @recipe_food.destroy
-        redirect_to recipe_path(@recipe), notice: 'Recipe Food was deleted successfully'
+        redirect_to "/recipe_foods/#{params[:id]}", notice: 'Recipe Food was deleted successfully'
       else
         flash.now[:alert] = @recipe_food.errors.full_messages.first if @recipe_food.errors.any?
         render :new, status: 400

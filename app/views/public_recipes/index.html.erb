@@ -1,0 +1,11 @@
+<h1>Public Recipe</h1>
+<div class="recipes-container">
+<% @public_recipes.each do |recipe| %>
+<div class="recipe-title">
+      <h2 class="recipe_name"><%= link_to recipe.name, recipe_path(id: recipe.id) %></h2>
+      <% if can? :destroy, recipe %>
+        <%= button_to "Remove", recipe_path(id: recipe.id), data: { turbo_method: :delete }, method: :delete, "turbo-frame": "recipes" %>
+      <% end %>
+    </div>
+<%end%>
+</div>
