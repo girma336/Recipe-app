@@ -21,6 +21,8 @@ class Ability
       can :manage, Recipe, user_id: user.id
       can :manage, RecipeFood, user_id: user.id
       can :manage, Food, user_id: user.id
+      can :manage, Inventory, user_id: user.id
+      can :manage, InventoryFood, user_id: user.id
       can :read, :all
       can :create, Food, recipe: { user_id: user.id }
     end

@@ -1,0 +1,29 @@
+<div class="sign-main">
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "devise-button" %>
+  <% if user_signed_in? %>
+    <p class="logged-as">Logged in as <%= current_user.try(:name) %></p>
+  <% end %>
+  <% unless user_signed_in? %>
+  <button class="devise-button">
+    <%= link_to "Log in", new_user_session_path, class: "link-login"%>
+  </button>
+  <% end %>
+</div>
+
+<div class="recipes-container">
+  <% @inventories.each do |inventory| %>
+  <div class="recipe-card">
+    <div class="recipe-title">
+      <h2 class="recipe_name"><%= link_to inventory.name, inventory_path(id: inventory.id) %></h2>
+      <% if can? :destroy, inventory %>
+        <%= button_to "Remove", inventory_path(id: inventory.id), data: { turbo_method: :delete }, method: :delete, "turbo-frame": "inventories" %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+
+
+  <div class="add-recipe">
+    <button class="recipe-btn"><%= link_to "Add inventory", new_inventory_path %></button>
+  </div>
+</div>

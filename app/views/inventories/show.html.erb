@@ -1,0 +1,25 @@
+<div class="recipe-details-container">
+  <h1 class="title"><%= @inventory.name %></h1>
+  <div class="buttons">
+    <button>Add Food</button>
+  </div>
+  
+  <div class="recipes-container recipes_container_list">
+    <div class="list">
+      <div class="list_food name title">Food</div>
+      <div class="list_food title">Quantity</div>
+      <div class="list_food title">Actions</div>
+    </div>
+    <% @inventory_foods.each do |inventory_food| %>
+      <div class="food">
+        <p><%= inventory_food.food.name %></p>
+        <p><%= inventory_food.quantity %></p>
+        <p><%= inventory_food.quantity %></p>
+        <div>
+          <div class="food_btn_spc"><%= link_to image_tag("edit.png"),  edit_inventory_food_path(inventory_id: @inventory.id, id: inventory_food.id) %></div>
+          <div><%= button_to image_tag("remove.png"), inventory_food_path(inventory_id: @inventory.id, id: inventory_food.id), method: :delete, class: 'remove_btn' %></div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+</div>
