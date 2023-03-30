@@ -1,7 +1,7 @@
 class FoodsController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
-    @foods = @user.foods.includes(:user)
+    # @user = User.find(params[:user_id])
+    @foods = Food.all
   end
 
   def new
@@ -14,9 +14,18 @@ class FoodsController < ApplicationController
 
   def create
     @food = Food.new(food_params)
-    @food.user_id = current_user.id
+    # @food.inventory_foods = .id
     if @food.save
-      redirect_to user_foods_index_path(current_user.id), notice: 'Food was successfully created'
+      redirect_to foods_path, notice: 'Food was successfully created'
+    else
+      render :new, alert: 'Error: Food not saved'
+    end
+  end
+
+  def destroy
+    @food = Food.find(params[:id])
+    if @food.destroy
+      redirect_to foods_path, notice: 'Food was successfully deleted'
     else
       render :new, alert: 'Error: Food not saved'
     end

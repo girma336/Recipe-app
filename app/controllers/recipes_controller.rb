@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   before_action :find_user
 
   def index
-    @recipes = Recipe.where(user: current_user)
+    @recipes = Recipe.all
   end
 
   def show

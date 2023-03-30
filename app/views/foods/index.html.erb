@@ -4,26 +4,29 @@
   <table class="table table-bordered table-hover">
     <thead class="table-secondary">
       <tr>
+        <th>#</th>
         <th>Food</th>
-        <th>Measurement unit</th>
-        <th>Unit price</th>
+        <th>measurement_unit</th>
+        <th>Price</th>
         <th>Actions</th>
       </tr>
     </thead>
   
     <tbody>
-      <% @foods.each do |food| %>
+      <% @foods.each_with_index do |food, index| %>
         <tr>
-          <th class="align-middle"><%= food.name %></th>
-          <td class="align-middle"><%= food.measurement_unit %></td>
-          <td class="align-middle">$<%= food.price %></td>
-          <td class="align-middle"><%= button_to 'Delete', food_url(food), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+           <th scope="row"><%= index+1 %></th>
+           <td><%= food.name %></td>
+           <td><%= food.measurement_unit %></td>
+           <td><%= food.price %></td>
+           <td class="align-middle"><%= button_to 'Delete', "foods/#{food.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
   
   <br>
-  
+  <% if can? :create, @foods %>
   <%= link_to 'Add Food', new_food_path, class: "btn btn-success"%>
+  <%end%>
 </div>

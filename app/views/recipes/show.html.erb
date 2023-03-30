@@ -18,26 +18,29 @@
     <%# link_to "Generate shooping list", shoppinglist_index_path(recipe_id: @recipe.id) %>
     <button>Generate Shopping List</button>
     <%# link_to 'Add ingredient', recipe_foods_path(recipe_id: @recipe.id) %>
-    <button>Add ingredient</button>
+    <%# <button>Add ingredient</button> %>
+    <%= link_to "Add ingredient", "/recipes/#{params[:id]}/recipe_foods/new", method: :get, class:"btn btn-primary" %>
   </div>
-  
-  <div class="recipes-container recipes_container_list">
-    <div class="list">
-      <div class="list_food name title">Food</div>
-      <div class="list_food title">Quantity</div>
-      <div class="list_food title">Value</div>
-      <div class="list_food title">Actions</div>
-    </div>
-    <% @recipe_foods.each do |recipe_food| %>
-      <div class="food">
-        <p><%= recipe_food.food.name %></p>
-        <p><%= recipe_food.quantity %></p>
-        <p>$<%= recipe_food.food.price * recipe_food.quantity %></p>
-        <div>
-          <div class="food_btn_spc"><%= link_to image_tag("edit.png"),  edit_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id) %></div>
-          <div><%= button_to image_tag("remove.png"), recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), method: :delete, class: 'remove_btn' %></div>
-        </div>
-      </div>
-    <% end %>
-    </div>
-</div>
+  <br>
+  <table class="table table-bordered table-hover">
+    <thead class="table-secondary">
+      <tr>
+        <th>#</th>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipe_foods.each_with_index do |food, index| %>
+        <tr>
+          <th class="align-middle"><%= index + 1 %></th>
+          <th class="align-middle"><%= food.food.name %></th>
+          <td class="align-middle"><%= food.quantity %></td>
+          <th>$<%= food.food.price * food.quantity %></th>
+          <td class="align-middle"><%= button_to 'Delete', "/recipe_foods/" + food.id.to_s, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

@@ -15,12 +15,12 @@
   <div class="recipe-card">
     <div class="recipe-title">
       <h2 class="recipe_name"><%= link_to recipe.name, recipe_path(id: recipe.id) %></h2>
-      <% if can? :destroy, recipe %>
+      <% if can? :destroy && user_signed_in? , recipe %>
         <%= button_to "Remove", recipe_path(id: recipe.id), data: { turbo_method: :delete }, method: :delete, "turbo-frame": "recipes" %>
       <% end %>
     </div>
     <div class="recipe-features">
-      <p class="recipe_desc"><%= recipe.description%></p>
+      <p class="recipe_desc"><%= recipe.description %></p>
     </div>
   </div>
   <% end %>
