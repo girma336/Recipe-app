@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :foods, only: [:index, :new, :create, :destroy] 
   resources :public_recipes, only: [:index]
   resources :public_recipes, only: [:index, :create, :new, ]
-
+  resources :inventories, only: [:update]
   # end
   get '/inventories', to: 'inventories#index'
   get '/inventories/new', to: 'inventories#new'
@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   get '/recipes/:id/recipe_foods/new', to: 'recipe_foods#new'
   post '/recipes/:id/recipe_foods', to: 'recipe_foods#create'
   get '/recipe_foods/:id', to: 'recipe_foods#show'
+
+
   
-  # post '/shopping_lists/', to: 'shopping_lists#create'
+  resources :shopping_lists, only: [:index, :create]
+  
 end

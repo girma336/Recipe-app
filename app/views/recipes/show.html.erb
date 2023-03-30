@@ -16,10 +16,36 @@
 
   <div class="buttons">
     <%# link_to "Generate shooping list", shoppinglist_index_path(recipe_id: @recipe.id) %>
-    <button>Generate Shopping List</button>
+    <%# <button>Generate Shopping List</button> %>
     <%# link_to 'Add ingredient', recipe_foods_path(recipe_id: @recipe.id) %>
-    <%# <button>Add ingredient</button> %>
-    <%= link_to "Add ingredient", "/recipes/#{params[:id]}/recipe_foods/new", method: :get, class:"btn btn-primary" %>
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Generating Shopping List</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+    <%= form_with url: shopping_lists_path(recipe_id: @recipe.id, inventory_id: :inventory_id), method: :get do |form| %>    
+    <%= form.hidden_field :recipe_id, value: @recipe.id %>
+    <%= form.collection_select :inventory_id, @inventories.order(:name),:id,:name, :include_blank => "--Select inventory--" %>
+    <%= form.submit "Generate Shopping List", class: 'btn bg-teal-300' %>
+  <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <%# <button type="button" class="btn btn-primary">Understood</button> %>
+      </div>
+    </div>
+  </div>
+</div>
+    <button>Add ingredient</button>
   </div>
   <br>
   <table class="table table-bordered table-hover">
@@ -44,3 +70,6 @@
       <% end %>
     </tbody>
   </table>
+
+    <%= link_to "Add ingredient", "/recipes/#{params[:id]}/recipe_foods/new", method: :get, class:"btn btn-primary" %>
+<br>
