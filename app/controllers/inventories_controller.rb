@@ -38,6 +38,18 @@ class InventoriesController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      if @story.update(inventory_params)
+        format.html { redirect_to inventories_url(@inventory), notice: "Story was successfully updated." }
+        # format.json { render :show, status: :ok, location: @story }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        # format.json { render json: @story.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   def find_user
