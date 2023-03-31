@@ -19,12 +19,12 @@ class Ability
       can :manage, :all
     else
       can :manage, Recipe, user_id: user.id
-      can :manage, RecipeFood, recipe: { user_id: user.id }
+      can :manage, RecipeFood
       can :manage, Food, user_id: user.id
       can :manage, Inventory, user_id: user.id
       can :manage, InventoryFood, user_id: user.id
       can :read, :all
-      can :create, Food, recipe: { user_id: user.id }
+      # can :create, Food, recipe: { user_id: user.id }
     end
 
     #

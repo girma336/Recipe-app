@@ -17,7 +17,7 @@ class RecipeFoodsController < ApplicationController
       flash[:alert] = 'Un Authorized'
       redirect_to recipe_path(id: @recipe.id)
     end
-    @recipe_food = RecipeFood.includes(:recipe).all
+    @recipe_food = RecipeFood.includes(:recipe).includes(:user).all
   end
 
   # def show
