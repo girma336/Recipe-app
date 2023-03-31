@@ -1,11 +1,12 @@
 <div class="recipe-details-container">
   <h1 class="title"><%= @inventory.name %></h1>
-  <div class="buttons">
-    <%= link_to "Add Food", "/inventories/#{params[:id]}/inventory_foods/new", method: :get, class:"btn btn-primary"%>
-  </div>
+  <button class="btn-all">
+    <%= link_to "Add Food", "/inventories/#{params[:id]}/inventory_foods/new", method: :get %>
+  </button>
 <br>
-  <table class="table table-bordered table-hover">
-    <thead class="table-secondary">
+<br>
+  <table class="table table-bordered">
+    <thead>
       <tr>
         <th>Food</th>
         <%# <th>Measurement unit</th> %>
@@ -20,7 +21,7 @@
           <th class="align-middle"><%= food.food.name %></th>
           
           <td class="align-middle"><%= food.quantity %></td>
-          <td class="align-middle"><%= button_to 'Delete', "/inventory_foods/" + food.id.to_s, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+          <td class="align-middle"><%= button_to 'Delete', "/inventory_foods/" + food.id.to_s, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-all"  %></td>
         </tr>
       <% end %>
     </tbody>

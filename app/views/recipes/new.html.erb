@@ -1,6 +1,6 @@
-<div class="back-button">
-  <button type="button"><%= link_to "Back to recipes", recipes_path %></button>
-</div>
+
+  <button class="btn-all" type="button"><%= link_to "Back to recipes", recipes_path%></button>
+
 
 <div class="new-recipe-container">
 <h1 class="title">New Recipe</h1>
@@ -27,6 +27,6 @@
       <%= f.check_box :public%><br/>
     </div>
     <div class="back_food">
-      <%= f.submit "Create Recipe", class: "recipe-create" %>
+      <%= f.submit "Create Recipe", class: "devise-button" %>
     </div>
   <% end %>
