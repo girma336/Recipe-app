@@ -9,16 +9,16 @@
     </div>
     <div class="toggle">
       <div class="private"><%=@recipe.public? ? 'Public' : 'Private'%></div>
+     <% if can? :update, @recipe %>
       <%= button_to @recipe.public? ? 'Make private' : 'Make public', toggle_recipe_path(id: @recipe.id), method: :post, class: 'toggle_btn', remote: true %> 
+    <%else%>
+    <p> Be Authorize </p>
+    <%end%>
     </div>
 
   </div>
 
   <div class="buttons">
-    <%# link_to "Generate shooping list", shoppinglist_index_path(recipe_id: @recipe.id) %>
-    <%# <button>Generate Shopping List</button> %>
-    <%# link_to 'Add ingredient', recipe_foods_path(recipe_id: @recipe.id) %>
-    <!-- Button trigger modal -->
 <button type="button" class="devise-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
  Generating Shopping List
 </button>
@@ -47,7 +47,7 @@
   </div>
 </div>
 </div>
-      <button class="devise-button" type="button"><%= link_to "Add ingredient", "/recipes/#{params[:id]}/recipe_foods/new", method: :get %></button>
+      <button class="devise-button" type="button">Add ingredient</button>
   </div>
   <br>
   <table class="table table-bordered ">
@@ -73,3 +73,5 @@
     </tbody>
   </table>
 <br>
+
+<button class="devise-button" type="button"><%= link_to "Add Food Recipe", "/recipes/#{params[:id]}/recipe_foods/new", method: :get %></button>
