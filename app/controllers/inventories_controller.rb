@@ -4,12 +4,12 @@ class InventoriesController < ApplicationController
   before_action :find_user
 
   def index
-    @inventories = Inventory.where(user: current_user)
+    @inventories = Inventory.all
   end
 
   def show
     @inventories = Inventory.find(params[:id])
-    @inventory_foods = @inventories.inventory_foods.includes(:food)
+    @inventory_foods = InventoryFood.includes(:food).all
   end
 
   def new

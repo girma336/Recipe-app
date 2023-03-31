@@ -68,7 +68,7 @@
           <td class="align-middle"><%= food.quantity %></td>
           <th>$<%= food.food.price * food.quantity %></th>
           <td class="align-middle">
-          <% if can? :destroy, @recipe%>
+          <% if can? :destroy, @recipe %>
           <%= button_to 'Delete', "/recipe_foods/" + food.id.to_s, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-all" %>
           <%end%>
           </td>
@@ -77,5 +77,6 @@
     </tbody>
   </table>
 <br>
-
+<% if can? :create, @recipe %>
 <button class="devise-button" type="button"><%= link_to "Add Food Recipe", "/recipes/#{params[:id]}/recipe_foods/new", method: :get %></button>
+<%end%>
