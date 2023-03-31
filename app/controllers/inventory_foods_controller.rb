@@ -1,7 +1,7 @@
 class InventoryFoodsController < ApplicationController
   load_and_authorize_resource only: [:dashBoard], find_by: :slug
   before_action :authenticate_user!
-  #  before_action :find_user
+  # before_action :find_user
   def new
     @inventory_food = InventoryFood.new
   end
