@@ -10,15 +10,15 @@ a {
 }
 
 tbody {
-color: #fff;
+  color: #fff;
 }
 
 thead {
   color: black;
-  background: linear-gradient(269.52deg,#ec008c 0,#f15b2a 98.86%);
+  background: linear-gradient(269.52deg, #ec008c 0, #f15b2a 98.86%);
   font-size: larger;
   font-weight: 700;
-  }
+}
 
 .welcome-page {
   font-size: 32px;
@@ -33,7 +33,7 @@ thead {
 }
 
 .welcome-page-bg {
-  background: linear-gradient(269.52deg,#ec008c 0,#f15b2a 98.86%);
+  background: linear-gradient(269.52deg, #ec008c 0, #f15b2a 98.86%);
   border-radius: 10px;
   overflow: hidden;
   margin: 0 auto;
@@ -45,64 +45,80 @@ thead {
   background-color: #242145;
 }
 
-.navbar-nav .nav-item:hover .nav-link {
-    border-bottom: 3px solid #FF1675;
+.navbar-nav .nav-item .nav-link {
+  border-bottom: 3px solid transparent;
 }
 
-.navbar-nav .nav-item .nav-link {
-    border-bottom: 3px solid transparent;
+.navbar-nav .nav-item:hover .nav-link {
+  border-bottom: 3px solid #ff1675;
 }
 
 .btn-all {
-  border: 2px solid transparent  ;
-  border-radius: 1rem ;
-  background: #E7005E ;
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  background: #e7005e;
   color: #fff;
-  padding: 0 1rem 0 1rem ;
-  margin: 0 auto;
-}
-.btn-all> a {
- text-decoration: none;
- color: #fff;
-} 
-
-.btn-all:hover {
-  border: 2px solid #585fa2 ;
-  border-radius: 1rem ;
-  background: #0D6EFD ;
-  color: #fff;
-  padding: 0 1rem 0 1rem ;
+  padding: 0 1rem 0 1rem;
   margin: 0 auto;
 }
 
-.btn-all:hover> a {
+.btn-all > a {
   text-decoration: none;
   color: #fff;
- }
+}
+
+.recipe_name > a {
+  text-decoration: none;
+  color: #f15b2a;
+}
+
+.btn-all:hover {
+  border: 2px solid #585fa2;
+  border-radius: 1rem;
+  background: #0d6efd;
+  color: #fff;
+  padding: 0 1rem 0 1rem;
+  margin: 0 auto;
+}
+
+.devise-button > a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.add-recipe > a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.toggle_btn > a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn-all:hover > a {
+  text-decoration: none;
+  color: #fff;
+}
 
 .devise-button {
-  border: 2px solid #585fa2  ;
-  border-radius: 1rem ;
-  background: #242145 ;
+  border: 2px solid #585fa2;
+  border-radius: 1rem;
+  background: #242145;
   color: #fff;
-  padding: 0.7rem 1rem 0.7rem 1rem ;
+  padding: 0.7rem 1rem 0.7rem 1rem;
   margin: 0 auto;
 }
 
 .devise-button:hover {
-  border: 2px solid transparent  ;
-  background: #585fa2 ;
+  border: 2px solid transparent;
+  background: #585fa2;
 }
 
-.devise-button> a {
-color: #fff;
-text-decoration: none;
-}
-
-.devise-button:hover> a {
+.devise-button:hover > a {
   color: #fff;
   text-decoration: none;
-  }
+}
 
 /* Recipes views */
 
@@ -154,20 +170,9 @@ text-decoration: none;
   gap: 0.6rem;
 }
 
-.recipe_name >a {
-  text-decoration: none;
-  color: #f15b2a;
- 
-}
-
 .add-recipe {
   display: flex;
   justify-content: center;
-}
-
-.add-recipe> a {
-  text-decoration: none;
-  color: #fff;
 }
 
 button,
@@ -208,7 +213,7 @@ button,
   display: grid;
   grid-template-columns: 4fr 2fr;
   margin: 2rem;
-  background: linear-gradient(150deg,#ff1675 -110%,#2a2753 40%);
+  background: linear-gradient(150deg, #ff1675 -110%, #2a2753 40%);
   border: 1px solid #585fa2;
   border-radius: 5px;
 }
@@ -218,24 +223,19 @@ button,
 }
 
 .toggle_btn {
-  border: 2px solid transparent  ;
-  border-radius: 1rem ;
-  background: rgb(78,172,101) ;
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  background: rgb(78, 172, 101);
   color: #fff;
-  padding: 0 1rem 0 1rem ;
+  padding: 0 1rem 0 1rem;
 }
 
 .toggle_btn:hover {
-  border: 2px solid rgb(78,172,101)  ;
-  border-radius: 1rem ;
-  background: rgb(45, 213, 87) ;
+  border: 2px solid rgb(78, 172, 101);
+  border-radius: 1rem;
+  background: rgb(45, 213, 87);
   color: #fff;
-  padding: 0 1rem 0 1rem ;
-}
-
-.toggle_btn> a {
- text-decoration: none;
- color: #fff;
+  padding: 0 1rem 0 1rem;
 }
 
 .buttons {
@@ -256,11 +256,11 @@ button,
 
 /* Add recipe */
 .new-recipe-container {
-  background: linear-gradient(269.52deg,#ec008c 0,#f15b2a 98.86%);
+  background: linear-gradient(269.52deg, #ec008c 0, #f15b2a 98.86%);
   border-radius: 10px;
   overflow: hidden;
   margin: 0 auto;
-  width:500px;
+  width: 500px;
   max-width: 1400px;
   padding: 1rem;
 }
@@ -294,18 +294,18 @@ button,
 /* Coded with love by Mutiullah Samim */
 
 body,
-  html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background: #1B1834 !important;
-  }
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #1b1834 !important;
+}
 
 .user_card {
   width: 350px;
   margin-top: auto;
   margin-bottom: auto;
-  background: linear-gradient(150deg,#ff1675 -110%,#2a2753 40%);
+  background: linear-gradient(150deg, #ff1675 -110%, #2a2753 40%);
   position: relative;
   display: flex;
   justify-content: center;
@@ -341,7 +341,7 @@ body,
 
 .login_btn {
   width: 100%;
-  background: #E7005E !important;
+  background: #e7005e !important;
   color: white !important;
 }
 
@@ -355,7 +355,7 @@ body,
 }
 
 .input-group-text {
-  background: #E7005E !important;
+  background: #e7005e !important;
   color: white !important;
   border: 0 !important;
   border-radius: 0.25rem 0 0 0.25rem !important;
@@ -368,6 +368,5 @@ body,
 }
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #E7005E !important;
+  background-color: #e7005e !important;
 }
-
