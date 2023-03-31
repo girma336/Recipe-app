@@ -1,5 +1,7 @@
 class FoodsController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!
+  before_action :find_user
   def index
     # @user = User.find(params[:user_id])
     @foods = Food.all
@@ -15,7 +17,7 @@ class FoodsController < ApplicationController
 
   def create
     @food = Food.new(food_params)
-    # @food.inventory_foods = .id
+    @food.user = @user
     if @food.save
       redirect_to foods_path, notice: 'Food was successfully created'
     else
@@ -31,7 +33,10 @@ class FoodsController < ApplicationController
       render :new, alert: 'Error: Food not saved'
     end
   end
-
+  private
+  def find_user
+    @user = current_user
+  end
   def food_params
     params.require(:food).permit(:name, :measurement_unit, :price)
   end

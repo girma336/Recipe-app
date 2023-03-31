@@ -19,7 +19,12 @@
            <td><%= food.name %></td>
            <td><%= food.measurement_unit %></td>
            <td><%= food.price %></td>
-           <td class="align-middle"><%= button_to 'Delete', "foods/#{food.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-all" %></td>
+           
+           <td class="align-middle">
+           <% if can? :destroy, food %>
+           <%= button_to 'Delete', "foods/#{food.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-all" %>
+           <%end%>
+           </td>
         </tr>
       <% end %>
     </tbody>

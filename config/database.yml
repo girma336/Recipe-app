@@ -26,7 +26,7 @@ development:
   adapter: postgresql
   database: Recipe_app_development
   encoding: utf8
-  host: localhost
+  # host: localhost
   
 test:
   <<: *default
