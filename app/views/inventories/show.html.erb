@@ -1,10 +1,10 @@
 <div class="recipe-details-container">
   <h1 class="title"><%= @inventory.name.capitalize() %></h1>
-  <div class="buttons">
+  <button class="btn-all ">
   <%if can? :create, @inventories %>
-    <%= link_to "Add Inventory Food", "/inventories/#{params[:id]}/inventory_foods/new", method: :get, class:"btn btn-primary"%>
+    <%= link_to "Add Inventory Food", "/inventories/#{params[:id]}/inventory_foods/new", method: :get %>
   <%end%>
-  </div>
+  </button>
 <br>
   <table class="table table-bordered">
     <thead >
