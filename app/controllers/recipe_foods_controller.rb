@@ -17,11 +17,12 @@ class RecipeFoodsController < ApplicationController
       flash[:alert] = 'Un Authorized'
       redirect_to recipe_path(id: @recipe.id)
     end
+    @recipe_food = RecipeFood.includes(:recipe).all
   end
 
-  def show
-    @recipe_food = @recipe.recipe_foods
-  end
+  # def show
+  #   @recipe_food = @recipe.recipe_foods
+  # end
 
   def new
     # @foods = @user.foods.all
@@ -58,7 +59,7 @@ class RecipeFoodsController < ApplicationController
   end
 
   def destroy
-    if can? :edit, @recipe
+    if can? :destroy, @recipe
       @recipe_food = RecipeFood.find(params[:id])
       if @recipe_food.destroy
         redirect_to "/recipe_foods/#{params[:id]}", notice: 'Recipe Food was deleted successfully'
@@ -68,7 +69,7 @@ class RecipeFoodsController < ApplicationController
       end
     else
       flash[:alert] = 'Un Authorized'
-      redirect_to recipe_path(id: @recipe.id)
+      redirect_to "/recipes/#{params[:id]}/"
     end
   end
 
