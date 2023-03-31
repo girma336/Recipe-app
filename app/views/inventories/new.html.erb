@@ -1,6 +1,4 @@
-<div class="back-button">
-  <button type="button"><%= link_to "Back to recipes", inventories_path %></button>
-</div>
+<button class="btn-all" type="button"><%= link_to "Back to inventories", inventories_path %></button>
 
 <div class="new-recipe-container">
 <h1 class="title">New Inventory</h1>
@@ -11,6 +9,8 @@
       <%= f.text_field :name,class: "input"%>
     </div>
     <div class="back_food">
-      <%= f.submit "Create Inventory", class: "inventory-create" %>
+      <%= f.submit "Create Inventory", class: "devise-button" %>
     </div>
   <% end %>
+</div>
+</div>

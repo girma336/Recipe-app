@@ -3,9 +3,9 @@
 
   <div class="recipe-details">
     <div class="all-details">
-      <p class="detail"><span>Preparation Time:</span><span><%= @recipe.preparation_date %> hours</span></p>
-      <p class="detail"><span>Cooking Time:</span> <span><%= @recipe.cooking_time %> hours</span></p>
-      <p class="detail"><%= @recipe.description %></p>
+      <p ><span class="detail">Preparation Time:</span><span><%= @recipe.preparation_date %> hours</span></p>
+      <p ><span class="detail">Cooking Time:</span> <span><%= @recipe.cooking_time %> hours</span></p>
+      <p ><span class="detail">Description:</span><%= @recipe.description %></p>
     </div>
     <div class="toggle">
       <div class="private"><%=@recipe.public? ? 'Public' : 'Private'%></div>
@@ -19,12 +19,13 @@
     <%# <button>Generate Shopping List</button> %>
     <%# link_to 'Add ingredient', recipe_foods_path(recipe_id: @recipe.id) %>
     <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+<button type="button" class="devise-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
  Generating Shopping List
 </button>
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="new-recipe-container">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -35,7 +36,7 @@
     <%= form_with url: shopping_lists_path(recipe_id: @recipe.id, inventory_id: :inventory_id), method: :get do |form| %>    
     <%= form.hidden_field :recipe_id, value: @recipe.id %>
     <%= form.collection_select :inventory_id, @inventories.order(:name),:id,:name, :include_blank => "--Select inventory--" %>
-    <%= form.submit "Generate Shopping List", class: 'btn bg-teal-300' %>
+    <%= form.submit "Generate Shopping List", class: 'btn-all' %>
   <% end %>
       </div>
       <div class="modal-footer">
@@ -45,11 +46,12 @@
     </div>
   </div>
 </div>
-    <button>Add ingredient</button>
+</div>
+      <button class="devise-button" type="button"><%= link_to "Add ingredient", "/recipes/#{params[:id]}/recipe_foods/new", method: :get %></button>
   </div>
   <br>
-  <table class="table table-bordered table-hover">
-    <thead class="table-secondary">
+  <table class="table table-bordered ">
+    <thead>
       <tr>
         <th>#</th>
         <th>Food</th>
@@ -65,11 +67,9 @@
           <th class="align-middle"><%= food.food.name %></th>
           <td class="align-middle"><%= food.quantity %></td>
           <th>$<%= food.food.price * food.quantity %></th>
-          <td class="align-middle"><%= button_to 'Delete', "/recipe_foods/" + food.id.to_s, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+          <td class="align-middle"><%= button_to 'Delete', "/recipe_foods/" + food.id.to_s, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-all" %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-
-    <%= link_to "Add ingredient", "/recipes/#{params[:id]}/recipe_foods/new", method: :get, class:"btn btn-primary" %>
 <br>

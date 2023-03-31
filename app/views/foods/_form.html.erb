@@ -1,7 +1,7 @@
 <div class="container food-form">
 
 <%= form_with(model: food) do |form| %>
-  <div class="card form">
+  <div class="new-recipe-container">
   <div class="card-body">
   <div class="mb-3">
     <%= form.label :name, class: "form-label" %>
@@ -22,9 +22,9 @@
       <%= form.number_field :price, autofocus: true, class: "form-control", required: true, min: 1 %>
     </div>
   </div>
-
+ <br>
   <div>
-    <%= form.submit class: "btn btn-primary btn-floating mx-1 food-btn" %>
+    <%= form.submit class: "devise-button" %>
   </div>
 </div>
 </div>

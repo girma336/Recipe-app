@@ -26,10 +26,10 @@ development:
   adapter: postgresql
   database: Recipe_app_development
   encoding: utf8
-  # host: localhost
-  # pool: 5
-  # username: zainab-my-blog
-  # password: 19921992zA@
+  host: localhost
+  pool: 5
+  username: zainab-my-blog
+  password: 19921992zA@
 test:
   <<: *default
   database: Recipe_app_test

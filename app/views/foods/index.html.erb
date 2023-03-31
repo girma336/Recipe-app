@@ -1,8 +1,8 @@
 <div class="container">
   <h1>Foods list</h1>
-  
-  <table class="table table-bordered table-hover">
-    <thead class="table-secondary">
+  <br>
+  <table class="table table-bordered">
+    <thead>
       <tr>
         <th>#</th>
         <th>Food</th>
@@ -19,7 +19,7 @@
            <td><%= food.name %></td>
            <td><%= food.measurement_unit %></td>
            <td><%= food.price %></td>
-           <td class="align-middle"><%= button_to 'Delete', "foods/#{food.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+           <td class="align-middle"><%= button_to 'Delete', "foods/#{food.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-all" %></td>
         </tr>
       <% end %>
     </tbody>
@@ -27,6 +27,6 @@
   
   <br>
   <% if can? :create, @foods %>
-  <%= link_to 'Add Food', new_food_path, class: "btn btn-success"%>
+  <%= link_to 'Add Food', new_food_path, class: "btn-all"%>
   <%end%>
 </div>
