@@ -33,10 +33,13 @@ class FoodsController < ApplicationController
       render :new, alert: 'Error: Food not saved'
     end
   end
+
   private
+
   def find_user
     @user = current_user
   end
+
   def food_params
     params.require(:food).permit(:name, :measurement_unit, :price)
   end
