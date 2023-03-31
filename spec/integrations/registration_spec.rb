@@ -6,7 +6,7 @@ RSpec.feature 'Registrations', type: :feature do
   before { subject.save }
   it 'can enter a name and receive a greeting' do
     visit new_user_registration_path
-    expect(page).to have_content 'Sign up'
+    expect(page).to have_content 'Sign Up'
   end
   it 'click the login error' do
     visit 'users/sign_up'
