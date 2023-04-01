@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>Foods list</h1>
+  <br>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Food</th>
+        <th>measurement_unit</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @foods.each_with_index do |food, index| %>
+        <tr>
+           <th scope="row"><%= index+1 %></th>
+           <td><%= food.name %></td>
+           <td><%= food.measurement_unit %></td>
+           <td><%= food.price %></td>
+           
+           <td class="align-middle">
+           <% if can? :destroy, food %>
+           <%= button_to 'Delete', "foods/#{food.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-all" %>
+           <%end%>
+           </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <br>
+<%= link_to 'Add Food', new_food_path, class: "btn-all"%>
+</div>

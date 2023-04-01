@@ -1,0 +1,32 @@
+
+  <button class="btn-all" type="button"><%= link_to "Back to recipes", recipes_path%></button>
+
+
+<div class="new-recipe-container">
+<h1 class="title">New Recipe</h1>
+<div class="new-recipe">
+  <%= form_with model: @recipe, url: recipes_path, local: true do |f| %>
+    <div>
+      <%= f.label :name, 'Recipe name'%><br>
+      <%= f.text_field :name,class: "input"%>
+    </div>
+    <div>
+      <%= f.label :description, 'Description'%><br>
+      <%= f.text_area :description, class: "input" %>
+    </div>
+    <div>
+      <%= f.label :preparation_time, 'Preparation Time'%><br>
+      <%= f.text_field :preparation_date, class: "input" %>
+    </div>
+    <div>
+      <%= f.label :cooking_time, 'Cooking Time'%><br>
+      <%= f.text_field :cooking_time, class: "input" %>
+    </div>
+    <div>
+      <%= f.label :public, "Do you want to make it public?" %>
+      <%= f.check_box :public%><br/>
+    </div>
+    <div class="back_food">
+      <%= f.submit "Create Recipe", class: "devise-button" %>
+    </div>
+  <% end %>

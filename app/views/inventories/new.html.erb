@@ -1,0 +1,16 @@
+<button class="btn-all" type="button"><%= link_to "Back to inventories", inventories_path %></button>
+
+<div class="new-recipe-container">
+<h1 class="title">New Inventory</h1>
+<div class="new-recipe">
+  <%= form_with model: @inventory, url: inventories_path, local: true do |f| %>
+    <div>
+      <%= f.label :name, 'Inventory name'%><br>
+      <%= f.text_field :name,class: "input"%>
+    </div>
+    <div class="back_food">
+      <%= f.submit "Create Inventory", class: "devise-button" %>
+    </div>
+  <% end %>
+</div>
+</div>

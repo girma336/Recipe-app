@@ -1,0 +1,32 @@
+<div class="recipe-details-container">
+  <h1 class="title"><%= @inventory.name.capitalize() %></h1>
+  <button class="btn-all ">
+  <%if can? :create, @inventories %>
+    <%= link_to "Add Inventory Food", "/inventories/#{params[:id]}/inventory_foods/new", method: :get %>
+  <%end%>
+  </button>
+<br><br>
+  <table class="table table-bordered">
+    <thead >
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @inventory_foods.each do |food| %>
+        <tr>
+          <th class="align-middle"><%= food.food.name %></th>
+          
+          <td class="align-middle"><%= food.quantity %></td>
+          <%if can? :destroy, @inventories %>
+          <td class="align-middle"><%= button_to 'Delete', "/inventory_foods/" + food.id.to_s, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-all" %></td>
+         <%end%>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+    
+</div>

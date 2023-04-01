@@ -1,0 +1,16 @@
+<div class="new-recipe-container">
+<%= form_with model: @inventory_food, url: "/inventories/#{params[:id]}/inventory_foods"  do |form| %>
+  <%= form.hidden_field :inventory_id, value: params[:id] %>
+    <div>
+      <%= form.label :name, 'Quantity'%><br>
+      <%= form.number_field :quantity, placeholder: 'Quantity', step: :any %>
+   </div>
+    <div>
+      <%= form.label :name, 'Food name'%><br>
+      <%= form.collection_select :food_id, Food.order(:name), :id, :name, prompt: true  %>
+    <br></div><br><br>
+  <div class="col-12">
+      <%= form.submit "Add Inventor", class: "devise-button" %>
+  </div>
+    <% end %>
+</div>

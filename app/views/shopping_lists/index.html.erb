@@ -1,0 +1,39 @@
+<div class="recipe-details-container">
+<h1 class="section-title"> Shopping List </h1>
+
+<div class="recipe-details">
+<div class="all-details"> 
+    <p><span class="detail">Amount of foods that you have to buy:</span> <span class="secondary"><%= @final.length %></span></p>
+    <p><span class="detail">Total value of food needed: </span><span class="secondary"><%= @total %></span> </p>
+</div>
+
+<div class="all-details"> 
+    <p><span class="detail">Recipe: </span><span class="secondary"><%= Recipe.find(params[:recipe_id]).name%></span></p>
+    <p><span class="detail">Inventory: </span><span class="secondary"><%=  Inventory.find(params[:inventory_id]).name%></span> </p>
+</div>
+
+</div>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>price</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @final.each_with_index do |food, index| %>
+        <tr>
+            <td><%= index + 1%></td>
+            <td> <%= food[:name] %> </td>
+            <td> <%= food[:quantity] %> </td>
+            <td> <%= food[:price] %> </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</section>
+
